@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import './App.css';
 import './bootstrap.min.css';
 
@@ -36,6 +37,18 @@ function Turn({author, books, highlight, onAnswerSelected}) {
       {books.map((title) => <Book title={title} key={title} onClick={onAnswerSelected}/>)}
     </div>
   </div>)
+}
+
+Turn.propTypes = {
+  author: propTypes.shape({
+    name: propTypes.string.isRequired,
+    imageUrl: propTypes.string.isRequired,
+    imageSource: propTypes.string.isRequired,
+    books: propTypes.arrayOf(propTypes.string).isRequired
+  }),
+  books: propTypes.arrayOf(propTypes.string).isRequired,
+  onAnswerSelected: propTypes.func.isRequired,
+  highlight: propTypes.string.isRequired 
 }
 
 function Continue() {
